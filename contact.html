@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - AIPhi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="AIPhi" class="logo-img">
+                </a>
+            </div>
+            <div class="nav-center">
+                <a href="#" data-i18n="nav.company">Company</a>
+                <a href="contact.html" data-i18n="nav.contact">Contact Us</a>
+                <a href="#" data-i18n="nav.docs">Documentation</a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="sign-in" data-i18n="nav.signin">Sign in</a>
+                <a href="#" class="get-started" data-i18n="nav.getstarted">Get Started</a>
+                <div class="language-switch">
+                    <button class="lang-btn" data-lang="zh">中文</button>
+                    <button class="lang-btn" data-lang="en">English</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="contact-page">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h1>Get in touch</h1>
+                <p>Our dedicated support team is here to help you with any questions or concerns related to AIPhi platform. We aim to provide timely and accurate responses, and your understanding is appreciated.</p>
+                
+                <div class="contact-method email">
+                    <div class="method-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <div class="method-content">
+                        <h3>Email us</h3>
+                        <p>If you need a private cluster, or wish to speak with our sales team or an engineer, simply fill in the form or email <a href="mailto:service@aiphi.com">service@aiphi.com</a> and we will respond promptly.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-field">
+                        <label for="email">EMAIL*</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="firstName">FIRST NAME*</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="lastName">LAST NAME*</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="phone">PHONE</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-field">
+                            <label for="company">COMPANY</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="gpuType">GPU TYPE*</label>
+                        <select id="gpuType" name="gpuType" required>
+                            <option value="">Select GPU Type</option>
+                            <option value="H100">NVIDIA H100</option>
+                            <option value="H200">NVIDIA H200</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="gpuNodes">EXPECTED NUMBER OF GPU NODES*</label>
+                            <input type="number" id="gpuNodes" name="gpuNodes" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="duration">RESERVATION DURATION (WEEKS)*</label>
+                            <input type="number" id="duration" name="duration" required>
+                        </div>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="message">MESSAGE*</label>
+                        <textarea id="message" name="message" placeholder="Please enter the details of your request. A member of our support staff will respond as soon as possible." required></textarea>
+                    </div>
+
+                    <div class="form-field checkbox">
+                        <input type="checkbox" id="consent" name="consent" required>
+                        <label for="consent">I agree to receive other communications from AIPhi Tech</label>
+                    </div>
+
+                    <div class="privacy-notice">
+                        <p>AIPhi Tech is committed to protecting and respecting your privacy, and we'll only use your personal information to administer your account and to provide the products and services you requested from us. From time to time, we would like to contact you about our products and services, as well as other content that may be of interest to you. If you consent to us contacting you for this purpose, please tick below to say how you would like us to contact you:</p>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="images/white-logo.png" alt="AIPhi" class="footer-logo-img">
+                </div>
+                <p>Empowering innovation with advanced AI computing solutions</p>
+            </div>
+            <div class="footer-links-wrapper">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="#">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="#">Status</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Security</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 AIPhi. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/i18n.js"></script>
+</body>
+</html> 
