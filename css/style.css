@@ -23,7 +23,7 @@ body {
 /* 导航栏样式 */
 .navbar {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
     background-color: #fff;
@@ -60,15 +60,21 @@ body {
 .sign-in {
     color: var(--text-color);
     text-decoration: none;
+    font-weight: 500;
 }
 
 .get-started {
-    padding: 0.5rem 1rem;
     background-color: var(--primary-color);
     color: white;
-    text-decoration: none;
+    padding: 0.5rem 1rem;
     border-radius: 4px;
+    text-decoration: none;
     font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.get-started:hover {
+    background-color: var(--primary-dark);
 }
 
 /* 英雄区域样式 */
@@ -303,8 +309,9 @@ footer {
 
 .footer-content {
     display: flex;
+    justify-content: flex-start;
     margin-bottom: 3rem;
-    position: relative;
+    gap: 32rem;
 }
 
 .footer-brand {
@@ -318,13 +325,15 @@ footer {
 
 .footer-links-wrapper {
     display: flex;
-    gap: 8rem;
-    position: absolute;
-    left: 500px;
 }
 
 .footer-column {
     min-width: 120px;
+    margin-right: 60px;
+}
+
+.footer-column:last-child {
+    margin-right: 0;
 }
 
 .footer-column h4 {
@@ -372,27 +381,6 @@ footer {
     display: inline-block;
 }
 
-/* 语言切换按钮样式 */
-.language-switch {
-    display: flex;
-    gap: 0.5rem;
-}
-
-.lang-btn {
-    padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid var(--primary-color);
-    color: var(--primary-color);
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.lang-btn.active {
-    background: var(--primary-color);
-    color: white;
-}
-
 /* 响应式设计 */
 @media (max-width: 1024px) {
     .hero {
@@ -406,7 +394,13 @@ footer {
     }
 
     .footer-content {
-        grid-template-columns: repeat(2, 1fr);
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-links-wrapper {
+        flex-wrap: wrap;
+        gap: 2rem;
     }
 }
 
@@ -431,11 +425,17 @@ footer {
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-links-wrapper {
+        flex-direction: column;
+        gap: 2rem;
     }
 
     .footer-bottom {
-        flex-direction: row;
+        flex-direction: column;
         text-align: center;
         gap: 1rem;
     }
