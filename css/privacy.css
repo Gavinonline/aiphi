@@ -5,35 +5,29 @@
 
 /* 隐私政策页面样式 */
 .privacy-page {
-    font-family: var(--font-family);
-    padding-top: 80px;
-    min-height: calc(100vh - 80px);
+    padding: 8rem 5% 4rem;
     background-color: #f8f9fa;
 }
 
 .privacy-container {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 4rem 2rem;
-}
-
-.privacy-content {
-    background: white;
+    background-color: white;
     padding: 3rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: var(--card-shadow);
 }
 
-.privacy-content h1 {
+.privacy-container h1 {
     font-size: 2.5rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
 }
 
-.last-updated {
+.privacy-container .intro {
+    font-size: 1.1rem;
+    line-height: 1.6;
     color: #666;
-    font-size: 1rem;
     margin-bottom: 2rem;
 }
 
@@ -41,59 +35,66 @@
     margin-bottom: 2.5rem;
 }
 
+.privacy-section:last-child {
+    margin-bottom: 0;
+}
+
 .privacy-section h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #333;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
 .privacy-section h3 {
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: #444;
+    font-size: 1.2rem;
     margin: 1.5rem 0 1rem;
+    color: var(--text-color);
 }
 
 .privacy-section p {
-    font-size: 1.1rem;
+    margin-bottom: 1rem;
     line-height: 1.6;
     color: #444;
-    margin-bottom: 1rem;
 }
 
 .privacy-section ul {
-    list-style-type: disc;
-    margin-left: 1.5rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    padding-left: 2rem;
 }
 
-.privacy-section ul li {
-    font-size: 1.1rem;
+.privacy-section li {
+    margin-bottom: 0.5rem;
     line-height: 1.6;
     color: #444;
-    margin-bottom: 0.5rem;
 }
 
-/* 响应式设计 */
+.privacy-section a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.privacy-section a:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
-    .privacy-container {
-        padding: 2rem 1rem;
+    .privacy-page {
+        padding: 6rem 1rem 2rem;
     }
 
-    .privacy-content {
+    .privacy-container {
         padding: 2rem;
     }
 
-    .privacy-content h1 {
+    .privacy-container h1 {
         font-size: 2rem;
     }
 
     .privacy-section h2 {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
     }
 
     .privacy-section h3 {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
     }
 } 
