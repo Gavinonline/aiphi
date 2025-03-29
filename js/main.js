@@ -142,6 +142,57 @@ document.addEventListener('DOMContentLoaded', () => {
     generatePricingCards();
     initPerformanceChart();
     handleFormSubmit();
+
+    // 汉堡菜单控制
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navCenter = document.querySelector('.nav-center');
+    const body = document.body;
+
+    if (menuToggle && navCenter) {
+        menuToggle.addEventListener('click', function() {
+            navCenter.classList.toggle('active');
+            body.style.overflow = navCenter.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // 点击导航链接时关闭菜单
+        const navLinks = navCenter.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                navCenter.classList.remove('active');
+                body.style.overflow = '';
+            });
+        });
+
+        // 点击菜单外部时关闭菜单
+        document.addEventListener('click', function(event) {
+            if (!navCenter.contains(event.target) && !menuToggle.contains(event.target)) {
+                navCenter.classList.remove('active');
+                body.style.overflow = '';
+            }
+        });
+    }
+
+    // 表单提交处理
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // 这里添加表单提交逻辑
+            alert('Thank you for your message. We will get back to you soon!');
+            contactForm.reset();
+        });
+    }
+
+    // 订阅表单处理
+    const subscribeForm = document.querySelector('.subscribe-form');
+    if (subscribeForm) {
+        subscribeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // 这里添加订阅逻辑
+            alert('Thank you for subscribing to our status updates!');
+            subscribeForm.reset();
+        });
+    }
 });
 
 // 监听语言变化
