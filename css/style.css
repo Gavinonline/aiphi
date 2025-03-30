@@ -325,6 +325,7 @@ footer {
 
 .footer-links-wrapper {
     display: flex;
+    gap: 4rem;
 }
 
 .footer-column {
@@ -441,87 +442,148 @@ footer {
     }
 }
 
-/* 移动端适配 */
+/* 移动端样式优化 */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 1rem;
+    .container {
+        padding: 0 15px;
     }
 
-    .nav-center {
-        display: none;
+    /* 导航栏优化 */
+    .nav-container {
+        padding: 10px 15px;
     }
 
-    .nav-right {
-        gap: 1rem;
+    .logo {
+        font-size: 1.2rem;
     }
 
-    .hero {
+    .hamburger {
+        display: block;
+        padding: 5px;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--bg-color);
+        padding: 20px;
         flex-direction: column;
-        padding: 4rem 1rem;
+        align-items: center;
+        gap: 15px;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        padding: 10px 0;
+        width: 100%;
         text-align: center;
     }
 
-    .hero-content {
-        width: 100%;
-        margin-bottom: 2rem;
+    /* 英雄区域优化 */
+    .hero {
+        padding: 60px 0;
     }
 
-    .hero-image {
-        width: 100%;
-        margin-top: 2rem;
+    .hero h1 {
+        font-size: 2rem;
     }
 
-    .hero-image img {
-        max-width: 100%;
-        height: auto;
+    .hero p {
+        font-size: 1rem;
+        margin: 15px 0;
     }
 
-    .gpu-deals {
-        padding: 4rem 1rem;
-    }
-
-    .deals-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .gpu-specs {
-        padding: 4rem 1rem;
-    }
-
-    .specs-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .why-choose {
-        padding: 4rem 1rem;
+    /* 功能卡片优化 */
+    .features {
+        padding: 40px 0;
     }
 
     .features-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .feature-card {
+        padding: 20px;
+        margin: 0;
+    }
+
+    .feature-card h3 {
+        font-size: 1.2rem;
+    }
+
+    /* 服务区域优化 */
+    .services {
+        padding: 40px 0;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    .service-card {
+        padding: 20px;
+        margin: 0;
+    }
+
+    .service-card h3 {
+        font-size: 1.2rem;
+    }
+
+    /* 页脚优化 */
+    footer {
+        padding: 3rem 15px 1.5rem;
     }
 
     .footer-content {
         flex-direction: column;
-        padding: 2rem 1rem;
+        gap: 2rem;
+        margin-bottom: 2rem;
     }
 
     .footer-brand {
-        width: 100% !important;
-        margin-bottom: 2rem;
+        width: 100%;
         text-align: center;
     }
 
-    .footer-columns {
+    .footer-links-wrapper {
+        display: flex;
         flex-direction: column;
         gap: 2rem;
-        margin-left: 0 !important;
+        width: 100%;
     }
 
     .footer-column {
+        width: 100%;
         text-align: center;
+        padding: 0 15px;
+        margin-right: 0;
+    }
+
+    .footer-column h4 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-column a {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        padding: 0.3rem 0;
+        display: block;
     }
 
     .footer-bottom {
@@ -532,39 +594,64 @@ footer {
 
     .social-links {
         justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .social-link {
+        font-size: 1.2rem;
     }
 }
 
-/* 小屏幕手机适配 */
+/* 添加更小屏幕的优化 */
 @media (max-width: 480px) {
     .hero h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 
     .hero p {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 
-    .hero-buttons {
-        flex-direction: column;
+    .feature-card,
+    .service-card {
+        padding: 15px;
+    }
+
+    footer {
+        padding: 2rem 15px 1rem;
+    }
+
+    .footer-content {
+        gap: 1.5rem;
+    }
+
+    .footer-brand p {
+        font-size: 0.9rem;
+    }
+
+    .footer-links-wrapper {
+        gap: 1.5rem;
+    }
+
+    .footer-column {
+        padding: 0 10px;
+    }
+
+    .footer-column h4 {
+        font-size: 1rem;
+    }
+
+    .footer-column a {
+        font-size: 0.85rem;
+        padding: 0.25rem 0;
+    }
+
+    .social-links {
         gap: 1rem;
     }
 
-    .hero-buttons a {
-        width: 100%;
-        text-align: center;
-    }
-
-    .deal-card {
-        padding: 1.5rem;
-    }
-
-    .spec-card {
-        padding: 1.5rem;
-    }
-
-    .feature-card {
-        padding: 1.5rem;
+    .social-link {
+        font-size: 1.1rem;
     }
 }
 
@@ -572,16 +659,21 @@ footer {
 @media (max-width: 768px) {
     .navbar {
         position: relative;
+        padding: 1rem;
     }
 
     .menu-toggle {
         display: block;
         position: absolute;
-        right: 1rem;
+        left: 1rem;
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
         z-index: 1000;
+    }
+
+    .logo {
+        margin: 0 auto;
     }
 
     .menu-toggle span {
@@ -597,32 +689,55 @@ footer {
         display: none;
         position: fixed;
         top: 0;
-        right: 0;
-        width: 100%;
+        left: -100%;
+        width: 250px;
         height: 100vh;
-        background-color: rgba(255, 255, 255, 0.95);
-        padding: 2rem;
+        background-color: #fff;
+        padding: 6rem 2rem 2rem;
         z-index: 999;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: left 0.3s ease;
     }
 
     .nav-center.active {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: flex-start;
+        left: 0;
     }
 
     .nav-center a {
-        margin: 1rem 0;
-        font-size: 1.2rem;
+        margin: 0.5rem 0;
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: left;
+        padding: 0.5rem 0;
     }
 
     .nav-right {
         margin-left: auto;
+        display: flex;
+        gap: 1rem;
     }
 
     .sign-in, .get-started {
         padding: 0.5rem 1rem;
         font-size: 0.9rem;
+    }
+
+    /* 添加遮罩层 */
+    .nav-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+
+    .nav-overlay.active {
+        display: block;
     }
 } 
