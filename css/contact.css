@@ -101,9 +101,19 @@
 /* 右侧表单区域 */
 .contact-form {
     background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 3rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 800px;
+    margin-left: 2rem;
+}
+
+.contact-form h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .form-group {
@@ -113,20 +123,60 @@
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #333;
-    font-size: 1rem;
+    color: #555;
     font-weight: 500;
+    font-size: 1.1rem;
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
-.form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    background: #f8f9fa;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+    outline: none;
+    background: white;
+}
+
+.form-group textarea {
+    min-height: 200px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.2rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,123,255,0.2);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
 }
 
 .form-group.checkbox {
@@ -185,24 +235,6 @@
     line-height: 1.6;
 }
 
-.submit-btn {
-    font-family: var(--font-family);
-    width: 100%;
-    padding: 1rem;
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.submit-btn:hover {
-    background-color: #0052cc;
-}
-
 /* 响应式设计 */
 @media (max-width: 1024px) {
     .contact-container {
@@ -255,37 +287,25 @@
     }
 
     .contact-form {
-        width: 100%;
-        padding: 1.5rem;
+        padding: 2rem;
+        margin-left: 0;
+        margin-top: 2rem;
     }
 
     .contact-form h2 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+        font-size: 1.8rem;
     }
 
-    .form-group {
-        margin-bottom: 1rem;
-    }
-
-    .form-group label {
-        font-size: 0.9rem;
-        margin-bottom: 0.3rem;
-    }
-
-    .form-group input,
+    .form-group input[type="text"],
+    .form-group input[type="email"],
     .form-group textarea {
         padding: 0.8rem;
-        font-size: 0.9rem;
-    }
-
-    .form-group textarea {
-        min-height: 120px;
+        font-size: 1rem;
     }
 
     .submit-btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 0.9rem;
+        padding: 1rem;
+        font-size: 1.1rem;
     }
 
     .contact-map {
@@ -322,7 +342,8 @@
         font-size: 0.85rem;
     }
 
-    .form-group input,
+    .form-group input[type="text"],
+    .form-group input[type="email"],
     .form-group textarea {
         font-size: 0.85rem;
     }
