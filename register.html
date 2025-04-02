@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AIPhi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">
+                    <img src="images/logo.png" alt="AIPhi" class="logo-img">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <div class="login-box">
+            <h2>Create Account</h2>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" required minlength="6">
+                </div>
+                <button type="submit" class="primary-btn">Sign Up</button>
+            </form>
+            <div class="social-login">
+                <button id="googleRegister" class="google-btn">
+                    <img src="images/google-icon.svg" alt="Google">
+                    Sign up with Google
+                </button>
+            </div>
+            <div class="login-link">
+                <p>Already have an account? <a href="login.html">Sign in</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { registerWithEmail, loginWithGoogle } from './js/auth.js';
+        import { trackPageView, trackSignUp, trackButtonClick } from './js/analytics.js';
+        
+        // Track page view
+        trackPageView('register_page');
+
+        // Email password registration
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            try {
+                await registerWithEmail(email, password);
+                trackSignUp('email');
+                alert('Registration successful!');
+                window.location.href = '/'; // Redirect to home page after successful registration
+            } catch (error) {
+                alert('Registration failed: ' + error.message);
+            }
+        });
+
+        // Google registration
+        document.getElementById('googleRegister').addEventListener('click', async () => {
+            try {
+                await loginWithGoogle();
+                trackSignUp('google');
+                window.location.href = '/'; // Redirect to home page after successful registration
+            } catch (error) {
+                alert('Google registration failed: ' + error.message);
+            }
+        });
+
+        // Track button clicks
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                trackButtonClick(button.textContent.trim());
+            });
+        });
+    </script>
+</body>
+</html> 

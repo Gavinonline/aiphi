@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - AIPhi</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="/">
+                    <img src="images/logo.png" alt="AIPhi" class="logo-img">
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="login-container">
+        <div class="login-box">
+            <h2>Sign In</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="primary-btn">Sign In</button>
+            </form>
+            <div class="social-login">
+                <button id="googleLogin" class="google-btn">
+                    <img src="images/google-icon.svg" alt="Google">
+                    Sign in with Google
+                </button>
+            </div>
+            <div class="register-link">
+                <p>Don't have an account? <a href="register.html">Sign up</a></p>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { loginWithEmail, loginWithGoogle } from './js/auth.js';
+        import { trackPageView, trackLogin, trackButtonClick } from './js/analytics.js';
+        
+        // Track page view
+        trackPageView('login_page');
+
+        // Email password login
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            try {
+                await loginWithEmail(email, password);
+                trackLogin('email');
+                window.location.href = '/'; // 改回跳转到首页
+            } catch (error) {
+                alert('Login failed: ' + error.message);
+            }
+        });
+
+        // Google login
+        document.getElementById('googleLogin').addEventListener('click', async () => {
+            try {
+                await loginWithGoogle();
+                trackLogin('google');
+                window.location.href = '/'; // 改回跳转到首页
+            } catch (error) {
+                alert('Google login failed: ' + error.message);
+            }
+        });
+
+        // Track button clicks
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+                trackButtonClick(button.textContent.trim());
+            });
+        });
+    </script>
+</body>
+</html> 
