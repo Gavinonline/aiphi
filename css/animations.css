@@ -1,0 +1,96 @@
+/* 淡入动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 应用淡入动画的元素 */
+.hero-content h1,
+.hero-content p,
+.hero-content .cta-buttons,
+.feature-card,
+.pricing-card,
+.testimonial-card {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* 为不同元素设置不同的动画延迟 */
+.hero-content h1 {
+    animation-delay: 0.2s;
+}
+
+.hero-content p {
+    animation-delay: 0.4s;
+}
+
+.hero-content .cta-buttons {
+    animation-delay: 0.6s;
+}
+
+.feature-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.pricing-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.pricing-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.pricing-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.testimonial-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.testimonial-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.testimonial-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* 悬停效果 */
+.feature-card:hover,
+.pricing-card:hover,
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* 按钮悬停效果 */
+.cta-button:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* 导航链接悬停效果 */
+.nav-links a:hover {
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+/* 用户头像悬停效果 */
+.user-avatar:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+} 

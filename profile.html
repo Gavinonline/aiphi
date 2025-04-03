@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - AIphi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <img src="images/logo.png" alt="AIphi Logo" class="logo-img">
+            </a>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <div class="nav-center">
+                <a href="#">Company</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="#">Documentation</a>
+            </div>
+            <div class="nav-right">
+                <div id="userSection" style="display: none;">
+                    <img id="userAvatar" src="/images/user-avatar.svg" alt="User Avatar" class="user-avatar" onclick="window.location.href='/profile.html'">
+                </div>
+                <div id="loginSection">
+                    <a href="login.html" class="sign-in">Sign in</a>
+                    <a href="login.html" class="get-started">Get Started</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="profile-page">
+        <div class="container">
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <img id="userAvatar" src="/images/user-avatar.svg" alt="User Avatar">
+                </div>
+                <div class="profile-info">
+                    <h2 id="userName">Loading...</h2>
+                    <p id="userEmail">Loading...</p>
+                </div>
+            </div>
+
+            <div class="profile-content">
+                <div class="profile-section">
+                    <h3>Account Information</h3>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Registration Date:</span>
+                            <span id="registerTime">Loading...</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Account Status:</span>
+                            <span class="status active">Active</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-section">
+                    <h3>Recent Orders</h3>
+                    <div id="ordersList" class="orders-list">
+                        <div class="no-orders">Loading orders...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <img src="images/white-logo.png" alt="AIPhi" class="footer-logo-img">
+                </div>
+                <p>Empowering innovation with advanced AI computing solutions</p>
+            </div>
+            <div class="footer-links-wrapper">
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <a href="#">About Us</a>
+                    <a href="#">Careers</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <a href="#">Documentation</a>
+                    <a href="#">API Reference</a>
+                    <a href="status.html">Status</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="service.html">Terms of Service</a>
+                    <a href="security.html">Security</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AIPhi. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">Twitter</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/firebase-config.js"></script>
+    <script type="module" src="js/profile.js"></script>
+    <script type="module">
+        import { auth } from './js/firebase-config.js';
+        import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Check user login status
+        onAuthStateChanged(auth, (user) => {
+            const userSection = document.getElementById('userSection');
+            const loginSection = document.getElementById('loginSection');
+            const userAvatar = document.getElementById('userAvatar');
+
+            if (user) {
+                // User is logged in
+                userSection.style.display = 'block';
+                loginSection.style.display = 'none';
+                
+                // Update user avatar
+                if (user.photoURL) {
+                    userAvatar.src = user.photoURL;
+                }
+            } else {
+                // User is not logged in
+                window.location.href = '/login.html';
+            }
+        });
+    </script>
+</body>
+</html> 

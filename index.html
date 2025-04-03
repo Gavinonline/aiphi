@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AIPhi - Advanced AI Computing</title>
+    <title>AIphi - Advanced AI Computing Services</title>
     <!-- main分支测试注释 -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">
-                <a href="/">
-                    <img src="images/logo.png" alt="AIPhi" class="logo-img">
-                </a>
-            </div>
+            <a href="/" class="logo">
+                <img src="images/logo.png" alt="AIphi Logo" class="logo-img">
+            </a>
             <div class="menu-toggle">
                 <span></span>
                 <span></span>
@@ -26,8 +26,13 @@
                 <a href="#">Documentation</a>
             </div>
             <div class="nav-right">
-                <a href="login.html" class="sign-in">Sign in</a>
-                <a href="login.html" class="get-started">Get Started</a>
+                <div id="userSection" style="display: none;">
+                    <img id="userAvatar" src="/images/user-avatar.svg" alt="User Avatar" class="user-avatar" onclick="window.location.href='/profile.html'">
+                </div>
+                <div id="loginSection">
+                    <a href="login.html" class="sign-in">Sign in</a>
+                    <a href="login.html" class="get-started">Get Started</a>
+                </div>
             </div>
         </nav>
     </header>
@@ -189,5 +194,31 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script type="module">
+    import { auth } from './js/firebase-config.js';
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+    // 检查用户登录状态
+    onAuthStateChanged(auth, (user) => {
+        const userSection = document.getElementById('userSection');
+        const loginSection = document.getElementById('loginSection');
+        const userAvatar = document.getElementById('userAvatar');
+
+        if (user) {
+            // 用户已登录
+            userSection.style.display = 'block';
+            loginSection.style.display = 'none';
+            
+            // 更新用户头像
+            if (user.photoURL) {
+                userAvatar.src = user.photoURL;
+            }
+        } else {
+            // 用户未登录
+            userSection.style.display = 'none';
+            loginSection.style.display = 'flex';
+        }
+    });
+    </script>
 </body>
 </html> 
