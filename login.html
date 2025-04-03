@@ -44,35 +44,53 @@
     </main>
 
     <script type="module">
-        import { loginWithEmail, loginWithGoogle } from './js/auth.js';
+        import { auth } from './js/firebase-config.js';
+        import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
         import { trackPageView, trackLogin, trackButtonClick } from './js/analytics.js';
         
         // Track page view
         trackPageView('login_page');
 
-        // Email password login
+        // 检查用户是否已登录
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                window.location.href = '/';
+            }
+        });
+
+        // 邮箱密码登录
         document.getElementById('loginForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-            
+
             try {
-                await loginWithEmail(email, password);
+                await signInWithEmailAndPassword(auth, email, password);
                 trackLogin('email');
-                window.location.href = '/'; // 改回跳转到首页
+                window.location.href = '/';
             } catch (error) {
-                alert('Login failed: ' + error.message);
+                console.error('Login error:', error);
+                alert('登录失败：' + error.message);
             }
         });
 
-        // Google login
+        // Google登录
         document.getElementById('googleLogin').addEventListener('click', async () => {
             try {
-                await loginWithGoogle();
+                const provider = new GoogleAuthProvider();
+                provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+                provider.addScope('https://www.googleapis.com/auth/userinfo.email');
+                provider.setCustomParameters({
+                    prompt: 'select_account'
+                });
+                
+                const result = await signInWithPopup(auth, provider);
+                console.log('Google login successful:', result.user);
                 trackLogin('google');
-                window.location.href = '/'; // 改回跳转到首页
+                window.location.href = '/';
             } catch (error) {
-                alert('Google login failed: ' + error.message);
+                console.error('Google login error:', error);
+                alert('登录失败：' + error.message);
             }
         });
 
