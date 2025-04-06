@@ -43,8 +43,16 @@
 }
 
 .profile-info p {
-    margin: 0.5rem 0 0;
+    margin: 5px 0;
     color: #666;
+    font-size: 1.1em;
+}
+
+.profile-info p#userEmail {
+    color: #007bff;
+    font-weight: 500;
+    font-size: 1.2em;
+    margin-top: 10px;
 }
 
 .profile-content {
@@ -97,73 +105,62 @@
 }
 
 .orders-list {
-    display: grid;
-    gap: 1rem;
+    margin-top: 20px;
+    min-height: 100px;
+    width: 100%;
+    display: block;
 }
 
 .order-item {
-    padding: 1.5rem;
+    padding: 15px;
+    margin: 10px 0;
     background-color: #f8f9fa;
-    border-radius: 5px;
-    border-left: 4px solid #0066ff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-size: 16px;
+    color: #333;
+    min-height: 20px;
+    display: block;
+    line-height: 1.5;
 }
 
 .order-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
 }
 
-.order-header h3 {
-    margin: 0;
-    font-size: 1rem;
+.order-id {
+    font-weight: 600;
     color: #333;
 }
 
-.order-status {
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.875rem;
-    font-weight: 500;
-}
-
-.order-status.pending {
-    background-color: #fff3cd;
-    color: #856404;
-}
-
-.order-status.processing {
-    background-color: #cce5ff;
-    color: #004085;
-}
-
-.order-status.completed {
-    background-color: #e6f4ea;
-    color: #1e7e34;
-}
-
-.order-status.cancelled {
-    background-color: #f8d7da;
-    color: #721c24;
+.order-date {
+    color: #666;
+    font-size: 0.9em;
 }
 
 .order-details {
-    display: grid;
-    gap: 0.5rem;
+    color: #444;
 }
 
 .order-details p {
-    margin: 0;
-    color: #666;
+    margin: 8px 0;
 }
 
 .no-orders {
     text-align: center;
-    padding: 2rem;
     color: #666;
-    background-color: #f8f9fa;
-    border-radius: 5px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* 页脚样式 */
@@ -336,4 +333,21 @@ footer {
     .social-link {
         font-size: 0.9rem;
     }
+}
+
+.logout-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #c82333;
 } 
